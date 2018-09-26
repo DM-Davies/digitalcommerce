@@ -1,3 +1,3 @@
-class Buyer < User
+class Seller < User
   has_many :orders
 end

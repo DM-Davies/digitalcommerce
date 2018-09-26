@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_015535) do
+ActiveRecord::Schema.define(version: 2018_09_26_123709) do
 
   create_table "buyers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 2018_09_22_015535) do
     t.integer "exp_date"
     t.integer "exp_year"
     t.string "video"
+    t.integer "buyers_id"
+    t.integer "sellers_id"
+    t.index ["buyers_id"], name: "index_orders_on_buyers_id"
+    t.index ["sellers_id"], name: "index_orders_on_sellers_id"
   end
 
   create_table "sales_uploads", force: :cascade do |t|
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_015535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
