@@ -1,0 +1,17 @@
+%h1 Sales Uploads
+
+%table.table
+  %thead
+    %tr
+      %th Buyer Name
+      %th Seller Name
+      %th Video
+      %th Order ID
+
+  %tbody
+    - @sales_uploads.each do |sales_upload|
+      %tr
+        %td= sales_upload.buyer.name
+        %td= sales_upload.seller.name
+        %td= link_to nil, sales_upload.video if sales_upload.video.present?
+        %td= sales_upload.order.id

@@ -1,0 +1,24 @@
+%h1 Orders
+
+- if @orders.any?
+  %table.table
+    %thead
+      %tr
+        %th Buyer Name
+        %th Seller Name
+        %th Sales Upload ID
+
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.buyer.name
+          %td= order.seller.name
+          %td
+            - if order.sales_upload.present?
+              = order.sales_upload.id
+            - else
+              This order has no Sales Upload.
+- else
+  No orders to show.
+
+= link_to 'New Order', new_order_path, class: 'btn btn-primary'
